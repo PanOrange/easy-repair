@@ -1,0 +1,1024 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800&subset=cyrillic-ext');
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+@import '../node_modules/react-dates/lib/css/_datepicker.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css';
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot');
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf') format('truetype'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg') format('svg');
+  font-weight:normal;
+  font-style:normal
+}
+
+$c-main = #FDE200
+$c-secondary = #FF8600
+$c-bg = #333
+$c-bg-secondary = #777
+
+*
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+html
+  height 100%
+  body
+    margin 0
+    position relative
+    padding-bottom 170px
+    min-height 100%
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size 16px
+    background: $c-bg url("./img/img-studio-1.jpg") top center no-repeat
+    background-attachment fixed
+    background-size cover
+    @media screen and (max-width: 400px)
+      font-size 14px
+      min-width 320px
+    @media screen and (max-width: 800px)
+      padding-bottom 300px
+    @media screen and (min-width: 1441px)
+      font-size 18px
+    &:before
+      content ''
+      display block
+      position absolute
+      top 0
+      left 0
+      height 100%
+      width 100%
+      background -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.79) 54%, rgba(255,255,255,1) 95%);
+      background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.79) 54%,rgba(255,255,255,1) 95%);
+      background: radial-gradient(ellipse at center,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.79) 54%,rgba(255,255,255,1) 95%);
+    .btn
+      border-radius 4px
+      border 2px solid $c-main
+      color $c-main
+      background-color: transparent
+      font-family: 'Open Sans', Arial, sans-serif;
+      outline none
+      cursor pointer
+      overflow hidden
+      transition all 0.5s ease 0s
+      &.activate-form
+        padding 0 10px
+      &.btn-login
+        font-weight 300
+      &.btn-submit
+        width 100%
+        padding 10px
+        background-color $c-bg-secondary
+        &:hover
+          color $c-bg-secondary
+          border 2px solid @color
+      &.btn-close
+        position absolute
+        top 15px
+        right 15px
+        border none
+        border-radius 50%
+        color $c-bg-secondary
+      &.btn-search
+        padding 10px 20px
+        .fa
+          margin-right 10px
+        &.collapse
+          padding 5px
+          display none
+          @media screen and (max-width: 800px)
+            display inline-block
+      &.btn-menu
+        display none
+        margin-right 10px
+        padding 5px 10px
+        @media screen and (max-width: 800px)
+          display inline-block
+      &:hover
+        background-color rgba($c-main, 0.3)
+    .alert
+      margin 0 auto
+      padding 20px 40px
+      max-width 600px
+      font-size 1.5em
+      border-radius 4px
+      .fa
+        margin-right 1em
+      &.alert-info
+        color dodgerblue
+        background-color lighten(@color, 90%)
+        border 2px solid @color
+      &.alert-error
+        color #ff7474
+        background-color lighten(@color, 90%)
+        border 2px solid @color
+    .header
+      position fixed
+      top 0
+      left 0
+      width 100%
+      background: -moz-linear-gradient(left, rgba($c-bg,0.6) 0%, rgba($c-bg,0.95) 5%, rgba($c-bg,1) 95%, rgba($c-bg,0.6) 100%);
+      background: -webkit-linear-gradient(left, rgba($c-bg,0.6) 0%,rgba($c-bg,0.95) 5%,rgba($c-bg,1) 95%,rgba($c-bg,0.6) 100%);
+      background: linear-gradient(to right, rgba($c-bg,0.6) 0%,rgba($c-bg, 0.95) 5%,rgba($c-bg,1) 95%,rgba($c-bg,0.6) 100%);
+      z-index 10
+      .header-top
+        margin 0 auto
+        max-width 900px
+        line-height 1.2
+        @media screen and (max-width: 840px)
+          min-width 300px
+        .phone-number
+        .login-holder
+          float right
+          margin-right 40px
+        .phone-number
+          color $c-main
+          .fa
+            margin-right 10px
+        .user-holder
+          padding 5px 20px
+          color #fff
+          .fa
+            margin-right 10px
+        &:after
+          content ""
+          display block
+          clear both
+      .header-bottom
+        padding 40px 60px
+        transition padding 0.5s ease 0s
+        @media screen and (max-width: 1024px)
+          min-width 300px
+          padding 40px 20px
+        &.header-bottom_small
+          padding 10px 60px
+          @media screen and (max-width: 1024px)
+            padding 10px 20px
+        ul
+          margin 0 0 10px
+          padding 0
+          list-style none
+          text-align center
+          @media screen and (max-width: 800px)
+            text-align right
+          .link
+            display inline-block
+            @media screen and (max-width: 800px)
+              display none
+            &.mobile
+              @media screen and (max-width: 800px)
+                display block
+                margin-bottom 4px
+            >a
+              display block
+              padding 10px 20px
+              text-decoration none
+              border-bottom 2px solid transparent
+              color #fff
+              transition all 0.5s ease 0s
+              cursor pointer
+              @media screen and (max-width: 800px)
+                border-bottom none
+                border-right 4px solid transparent
+              &.active
+                color $c-main
+                border-bottom 1px solid @color
+                @media screen and (max-width: 800px)
+                  border-bottom none
+                  border-right 4px solid $c-main
+              &:hover
+                border-bottom 1px solid $c-main
+                @media screen and (max-width: 800px)
+                  border-bottom none
+                  border-right 4px solid $c-main
+        .search
+          display block
+          max-width 1200px
+          margin 0 auto
+          @media screen and (max-width: 1024px)
+            font-size 0.9em
+          form
+            transition all 0.5s ease 0s
+            @media screen and (max-width: 800px)
+              display none
+            &.block
+              @media screen and (max-width: 800px)
+                display block
+              .select
+              .DateInput__display-text
+                @media screen and (max-width: 800px)
+                  display block
+          fieldset
+            padding .35em
+            border-radius 4px
+            border 1px solid $c-bg-secondary
+            text-align center
+          .select
+          .DateInput__display-text
+            padding 10px
+            font-family 'Open Sans', Arial, sans-serif !important
+            font-size 1em
+            line-height 1.2em
+            background-color $c-main
+          .select
+            padding 10px
+            width 20%
+            border-radius 4px
+            border 2px solid $c-bg-secondary
+            outline none
+            @media screen and (min-width: 801px)
+              &:nth-child(even)
+                margin 0 1%
+            @media screen and (max-width: 1124px)
+              width 15%
+            @media screen and (max-width: 800px)
+              display block
+              width 100%
+          .DateRangePicker
+            @media screen and (max-width: 800px)
+              display block
+          .DateRangePickerInput
+            border 2px solid $c-bg-secondary
+            border-radius 4px
+            background-color #ededcd
+            @media screen and (max-width: 800px)
+              width 100%
+            .DateInput
+              padding 2px
+              width 90px
+              background-color transparent
+              font-size 1em
+              line-height 1.2em
+              @media screen and (max-width: 800px)
+                width 40%
+          .transition-container
+            box-shadow 0 0 10px $c-bg
+    .form-wrap
+      display none
+      position fixed
+      top 0
+      left 0
+      height 100%
+      width 100%
+      background-color: rgba(#fff, 0.9)
+      z-index 20
+    .form-login
+      top 100px
+      left 50%
+      margin-left -132px
+    .form-order
+      top 5%
+      left 50%
+      width 600px
+      height 95%
+      margin-left -300px
+      z-index 22
+      @media screen and (max-width: 600px)
+        width 360px
+        margin-left -180px
+      @media screen and (max-width: 360px)
+        left 0
+        width 0
+        min-width 340px
+        margin-left 0
+      .input-holder
+        margin 20px 0
+      .input-item
+      select[name="city"]
+        width 100%
+        padding 10px
+        border-radius 4px
+        border 1px solid $c-bg-secondary
+        outline none
+        &:focus
+          border 1px solid $c-main
+      &.active fieldset
+        @media screen and (max-width: 600px)
+          padding 10px
+    .form-wrap
+    .form-login
+    .form-order
+      &.active
+        display block
+    .form-login
+    .form-order
+      display none
+      position fixed
+      z-index 22
+      fieldset
+        position relative
+        overflow auto
+        border-radius 4px
+        background-color lighten($c-bg-secondary, 90%)
+        padding 20px 40px
+        box-shadow 0 10px 20px $c-bg-secondary
+        .master-info
+          font-weight bold
+          color $c-secondary
+        .input-holder
+          margin-bottom 20px
+          .input-login
+          .input-password
+            margin 10px 0
+            padding 10px
+            width 200px
+            border-radius 4px
+            border 1px solid $c-bg-secondary
+            outline none
+            &:focus
+              border 1px solid $c-main
+        .alert
+          display none
+          position absolute
+          top 0
+          left 0
+          height 100%
+          width 100%
+          z-index 22
+          &.show
+            display block
+    .main
+      position relative
+      padding 250px 40px 20px
+      max-width 1200px
+      margin 0 auto
+      z-index 6
+      @media screen and (max-width: 800px)
+        padding 170px 10px 20px
+        min-width 300px
+      &.homepage
+        padding 450px 40px 20px
+        color $c-bg-secondary
+        @media screen and (max-width: 800px)
+          padding 200px 40px 20px
+        .slogan
+          position relative
+          margin 0 auto 400px
+          max-width 900px
+          z-index 6
+          @media screen and (max-width: 800px)
+            display none
+          .repair
+          .easy
+            display inline-block
+            width 50%
+            text-align center
+          .repair>span
+            font-size 6em
+            color $c-bg-secondary
+            text-shadow 5px 5px 10px black
+          .easy>span
+            font-size 8em
+            color $c-secondary
+            font-family "Comic Sans MS", cursive, sans-serif
+            text-shadow 5px 5px 15px $c-bg
+            animation-delay 0.5s
+      &.is-loading
+        .slogan
+          display none
+      &.best-worker
+        padding-top 200px
+        color $c-bg-secondary
+        .react-sanfona
+          .react-sanfona-item
+            min-width 300px
+            display block
+            position relative
+            &:before
+              position absolute
+              top 0.7em
+              left 1em
+              font-size 1.5em
+            &.rotate
+              &:before
+                transform rotate(-90deg)
+            .react-sanfona-item-title
+              display block
+              padding 1em 3em
+              font-family: 'Open Sans', Arial, sans-serif;
+              font-size 16px
+              border-radius 1em/2em
+              border 4px solid $c-secondary
+              background: rgb(255,203,147);
+              background: -moz-linear-gradient(top,  rgba(255,203,147,1) 0%, rgba(255,134,0,1) 40%, rgba(255,134,0,1) 100%);
+              background: -webkit-linear-gradient(top,  rgba(255,203,147,1) 0%,rgba(255,134,0,1) 40%,rgba(255,134,0,1) 100%);
+              background: linear-gradient(to bottom,  rgba(255,203,147,1) 0%,rgba(255,134,0,1) 40%,rgba(255,134,0,1) 100%);
+            .react-sanfona-item-body-wrapper
+              padding 20px
+              font-family: 'Open Sans', Arial, sans-serif;
+              font-size 16px
+              border-radius 20px
+              border 2px solid $c-bg-secondary
+              background-color rgba($c-bg-secondary, 10%)
+              overflow hidden
+              .best-worker-item
+                height 7em
+                margin 0 -20px
+                padding 1em 2em
+                background-color #fff
+                overflow hidden
+                @media screen and (max-width: 800px)
+                  min-width 300px
+                  padding 1em 0.7em
+                .avatar-holder
+                  display inline-block
+                  width 10%
+                  height 100%
+                  @media screen and (max-width: 600px)
+                    width 20%
+                  .avatar
+                    display block
+                    height 100%
+                    min-width 10%
+                    margin 0 auto
+                &:nth-child(even)
+                  background-color lighten($c-bg-secondary, 80%)
+                &:nth-child(odd)
+                  background-color lighten($c-main, 80%)
+                .name
+                .rate
+                .works
+                .experience
+                .order-holder
+                  display inline-block
+                  width 17%
+                  height 100%
+                  vertical-align middle
+                  @media screen and (max-width: 800px)
+                    width 30%
+                  div
+                    padding 0.2em
+                    text-align center
+                  .activate-form
+                    width 100%
+                    height 40px
+                    left 0
+                    border-color $c-bg
+                    background-color $c-main
+                    color $c-bg
+                    transition all 0.5s ease 0s
+                    &:hover
+                      background-color lighten($c-main, 50%)
+                .works
+                .experience
+                  @media screen and (max-width: 800px)
+                    display none
+                .rate
+                  @media screen and (max-width: 600px)
+                    display none
+                .name
+                  @media screen and (max-width: 600px)
+                    width 45%
+                .order-holder
+                  @media screen and (max-width: 600px)
+                    width 35%
+      .wrapper
+        position relative
+        margin 0 auto
+        padding 40px
+        max-width 800px
+        border 1px solid #bbb
+        border-radius 4px
+        line-height 1.5
+        box-shadow 0 10px 20px $c-bg-secondary
+        background-color #fff
+        color $c-bg-secondary
+        z-index 6
+        >img
+          width 100%
+        h1
+          font-size 2em
+          @media  screen and (max-width: 1024px)
+            font-size 1.5em
+        p
+          font-size 1.2em
+          @media  screen and (max-width: 1024px)
+            font-size 1em
+      .best
+        position relative
+        padding 5px
+        margin-bottom 40px
+        border 1px solid lighten($c-bg-secondary, 50%)
+        background-color rgba(lighten($c-bg-secondary, 50%), 0.6)
+        z-index 6
+        @media screen and (max-width: 1024px)
+          font-size 0.8em
+        .slick-arrow
+          &:before
+            font-size 30px
+            color $c-bg-secondary
+          &.slick-prev
+            left -40px
+          &.slick-next
+            right -32px
+        .heading-block
+          margin 0
+          padding 20px
+          font-size 1.6em
+          font-weight bold
+          text-transform uppercase
+        .slide-holder
+          position relative
+          margin 4px
+          font-size 1em
+          box-shadow 0 0 2px $c-bg-secondary
+          background-color #fff
+          overflow hidden
+          .photo
+            width 100%
+          p
+            padding 2%
+          .slide-top
+            .avatar-holder
+            .specialization-holder
+              padding 2%
+              display inline-block
+              vertical-align top
+            .avatar-holder
+              width 60%
+              .avatar
+                width 100%
+            .specialization-holder
+              width 40%
+              .specialization-header
+                margin 0 0 10px
+              .skill
+                margin 2px
+                padding 4px
+                border-radius 2px
+                color #fff
+                background-color $c-bg
+          .slide-middle
+            padding 2%
+            line-height 100%
+            .rate
+              display inline-block
+            .rate
+              width 56%
+              .rate-number
+                padding 4px
+                text-align right
+                font-size 1em
+              .rate-line
+                position relative
+                height 10px
+                border-bottom 1px solid black
+                background-color: $c-main
+                background: -moz-linear-gradient(left,  rgba(254,252,234,1) 5%, rgba(253,226,0,1) 80%);
+                background: -webkit-linear-gradient(left,  rgba(254,252,234,1) 5%,rgba(253,226,0,1) 80%);
+                background: linear-gradient(to right,  rgba(254,252,234,1) 5%,rgba(253,226,0,1) 80%);
+                list-style none
+                margin 0
+                padding 0
+                font-size 0
+                overflow hidden
+                li
+                  width 10%
+                  height 100%
+                  display inline-block
+                  box-sizing border-box
+                  border 1px solid $c-bg-secondary
+                .rate-range
+                  position absolute
+                  top 0
+                  height 100%
+                  width 100%
+                  background-color $c-bg-secondary
+                  z-index 1
+          .slide-bottom
+            position relative
+            padding 10px 20px
+            height 40px
+            font-size 1.1em
+            background-color: #000
+            color #fff
+            z-index 10
+            &.masters
+              background: rgb(30,87,153);
+              background: -moz-linear-gradient(left,  rgba(30,87,153,1) 0%, rgba(41,137,216,1) 11%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
+              background: -webkit-linear-gradient(left,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 11%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
+              background: linear-gradient(to right,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 11%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
+            &:after
+              content ''
+              display block
+              clear both
+            .votes
+            .city
+              float left
+            .city
+            .worker
+              color $c-main
+            .name
+            .worker
+              float right
+            .name
+              color lime
+            .fa
+              margin-right 10px
+          .button-holder
+            position relative
+            height 40px
+            background-color lighten($c-bg-secondary, 50%)
+            .counts
+              height 100%
+              vertical-align bottom
+              background-color $c-bg
+              color #fff
+              .counts-works
+              .counts-months
+                height 100%
+                width 50%
+                display inline-block
+                padding 4px
+                font-size 1em
+                font-style italic
+                text-align left
+                line-height 2em
+                vertical-align bottom
+                box-sizing border-box
+                >span
+                  display inline-block
+                  margin-right 0.2em
+                  color $c-main
+              .counts-months
+                text-align right
+            .activate-form
+              position absolute
+              width 100%
+              height 100%
+              bottom 40px
+              left 0
+              border-color $c-bg
+              background-color $c-main
+              color $c-bg
+              transition all 0.5s ease 0s
+              z-index 1
+          &:hover
+            .activate-form
+              bottom 0
+              &:hover
+                background-color lighten($c-main, 50%)
+      .query-item
+        position relative
+        margin 20px auto
+        padding 10px
+        max-width 1200px
+        border 2px solid $c-bg
+        background-color lighten($c-bg-secondary, 40%)
+        color $c-bg-secondary
+        overflow hidden
+        z-index 6
+        .worker-card
+        .worker-info
+          display inline-block
+        .worker-card
+          width 30%
+          margin-right 2%
+          .block
+            @media screen and (max-width: 600px)
+              display inline-block
+              width 50%
+              margin-bottom 10px
+              vertical-align: top
+          @media screen and (max-width: 600px)
+            width 100%
+            margin-right 0
+          .avatar-holder
+            margin-bottom 20px
+            .avatar
+              width 100%
+          .rate
+            display inline-block
+            width 100%
+            margin-bottom 20px
+            padding-right 2%
+            .rate-number
+              padding 4px
+              text-align right
+              font-size 1em
+            .rate-line
+              position relative
+              height 10px
+              border-bottom 1px solid black
+              background-color: $c-main
+              background: -moz-linear-gradient(left,  rgba(254,252,234,1) 5%, rgba(253,226,0,1) 80%);
+              background: -webkit-linear-gradient(left,  rgba(254,252,234,1) 5%,rgba(253,226,0,1) 80%);
+              background: linear-gradient(to right,  rgba(254,252,234,1) 5%,rgba(253,226,0,1) 80%);
+              list-style none
+              margin 0
+              padding 0
+              font-size 0
+              overflow hidden
+              li
+                width 10%
+                height 100%
+                display inline-block
+                box-sizing border-box
+                border 1px solid $c-bg-secondary
+              .rate-range
+                position absolute
+                top 0
+                height 100%
+                width 100%
+                background-color $c-bg-secondary
+                z-index 1
+          .worker-name
+            padding 10px
+            background-color $c-bg
+            .city
+              float left
+              color $c-main
+            .name
+              float right
+              color aliceblue
+            &:after
+              content ''
+              display block
+              clear both
+          .schedule
+            padding 1em
+            background-color $c-main
+            .activate-form
+              width 100%
+              height 40px
+              left 0
+              border-color $c-bg
+              background-color $c-main
+              color $c-bg
+              transition all 0.5s ease 0s
+              &:hover
+                background-color lighten($c-main, 50%)
+        .worker-info
+          background-color: #fff
+          width 68%
+          max-height 100%
+          vertical-align top
+          border-radius 4px
+          overflow auto
+          @media screen and (max-width: 600px)
+            width 100%
+          .react-tabs
+            overflow hidden
+            .react-tabs__tab-list
+              margin 0
+              padding 0
+              list-style none
+              background-color $c-bg-secondary
+              .react-tabs__tab
+                display inline-block
+                padding 10px
+                font-weight bold
+                color lighten($c-bg-secondary, 40%)
+                background-color $c-bg-secondary
+                border-bottom 4px solid @color
+                outline none
+                transition all 0.2s ease 0s
+                &.react-tabs__tab--selected
+                &:hover
+                  color $c-secondary
+                  border-bottom 4px solid @color
+                &.react-tabs__tab--selected
+                  background-color darken($c-bg-secondary, 40%)
+                  border-top-left-radius 4px
+                  border-top-right-radius 4px
+            .react-tabs__tab-panel
+              padding 2em 1em
+              display none
+              max-height 600px
+              overflow auto
+              .info
+                font-weight bold
+                color $c-secondary
+              .skill
+                display inline-block
+                padding 10px 20px
+                border-radius 4px
+                margin-right 20px
+                margin-bottom 20px
+                min-width 10%
+                color #fff
+                background-color $c-secondary
+              &.react-tabs__tab-panel--selected
+                display block
+              .work-item
+                list-style none
+                >img
+                  width 100%
+      &.projects
+        padding 200px 40px 20px
+        @media screen and (max-width: 800px)
+          padding 200px 80px 40px 40px
+        @media screen and (max-width: 600px)
+          padding 200px 40px 40px 10px
+          min-width 380px
+        .filter
+          position fixed
+          top 200px
+          right 1px
+          z-index 10
+          .filter-holder
+            padding 20px
+            color $c-bg-secondary
+            background-color rgba(lighten(@color, 90%) 0.8)
+            border-radius 4px
+            box-shadow 0 0 5px @color
+            @media screen and (max-width: 600px)
+              padding 2px
+            &:hover
+              background-color lighten(@color, 90%)
+            .filter-item
+              position relative
+              width 2em
+              height 2em
+              margin-bottom 10px
+              border 1px solid lighten($c-bg-secondary, 50%)
+              border-radius 2px
+              overflow hidden
+              cursor pointer
+              @media screen and (max-width: 600px)
+                margin-bottom 2px
+              .fa
+                position absolute
+                top 0.5em
+                left 0.5em
+              &.active
+                box-shadow inset 1px 1px 2px $c-bg-secondary
+                background-color lighten($c-main, 90%)
+                .fa
+                  top 0.55em
+                  left 0.55em
+              &:nth-child(1)
+              &:nth-child(2)
+                @media screen and (max-width: 800px)
+                  display none
+        .move-top
+          display none
+          position fixed
+          right 1px
+          bottom 20px
+          padding 20px
+          color $c-bg-secondary
+          background-color rgba(lighten(@color, 90%) 0.8)
+          border-radius 4px
+          box-shadow 0 0 5px @color
+          cursor pointer
+          z-index 10
+          @media screen and (max-width: 600px)
+            padding 2px
+          &:hover
+            background-color lighten(@color, 90%)
+            box-shadow 0 0 10px @color
+          &.visible
+            display block
+          >div
+            position relative
+            width 2em
+            height 2em
+            border 1px solid lighten($c-bg-secondary, 50%)
+            border-radius 2px
+            overflow hidden
+            .fa
+              position absolute
+              top 0.5em
+              left 0.5em
+        .project-list
+          text-align center
+          .project-item
+            margin 20px auto
+            max-width 900px
+            border 4px solid $c-bg
+            background-color #fff
+            box-shadow 5px 5px 40px $c-bg-secondary
+            text-align left
+            overflow hidden
+            .project-item-header
+              font-size 1.1em
+              background-color $c-bg
+              >span
+                display inline-block
+              .project-title
+                padding 10px 30px
+                text-transform uppercase
+                border-top-right-radius 20px
+                background-color #fff
+              .project-votes
+                float right
+                margin 10px
+                color #fff
+                .fa
+                  margin-right 10px
+            .project-item-main
+              position relative
+              margin 5px 5px 30px
+              background-size cover
+              overflow hidden
+              transition all 0.7s ease 1s
+              z-index 5
+              .project-info
+              .project-photo
+                padding 20px
+                display inline-block
+                vertical-align top
+              .project-info
+                position relative
+                width 30%
+                color $c-bg-secondary
+                transition all 0.5s ease 0s
+                z-index 7
+                h3
+                  display inline-block
+                  padding 10px 20px
+                  background-color $c-bg-secondary
+                  border-radius 20px
+                  color $c-main
+                .fa
+                  margin-right 10px
+                div
+                  padding 10px
+              .project-photo
+                width 70%
+                img
+                  width 100%
+                  margin-bottom 20px
+            &.table
+              display inline-block
+              margin 1%
+              width 30%
+              vertical-align top
+              @media screen and (max-width: 1000px)
+                width 48%
+              @media screen and (max-width: 800px)
+                width 100%
+              .project-item-main
+                .project-info
+                  width 100%
+                  opacity 0
+                &:after
+                  content ""
+                  display block
+                  position absolute
+                  top 0
+                  left 0
+                  width 100%
+                  height 100%
+                  z-index 6
+                &:hover
+                  &:after
+                    background-color rgba(#fff, 0.8)
+                  .project-info
+                    opacity 1
+    .footer
+      position absolute
+      bottom 0
+      left 0
+      width 100%
+      background-color: $c-bg-secondary
+      .footer-inner
+        margin 0 auto 20px
+        max-width 1000px
+        .social
+        .contact
+          width 50%
+          padding 4%
+          display inline-block
+          vertical-align top
+          box-sizing border-box
+          @media screen and (max-width: 600px)
+            display block
+            width 100%
+            margin-right 0
+            margin-bottom 1em
+        .social>h2
+          margin-top 0
+          margin-bottom 10px
+          color #bbb
+        .social>ul
+          margin 0
+          padding 0
+          list-style none
+          &>li
+            display inline-block
+            vertical-align middle
+            padding 10px
+            .fa
+              text-decoration none
+              color $c-bg
+              transition color 0.3s ease 0s
+              &:hover
+                color $c-main
+        .contact>div
+          margin-bottom 1em
+        .copyright
+          position absolute
+          left 0
+          bottom 10px
+          width 100%
+          padding 10px
+          font-size 0.7em
+          text-align center
+          color #bbb
+          box-sizing border-box
