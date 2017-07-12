@@ -1,6 +1,7 @@
 {
   "name": "easy-repair",
   "version": "0.1.0",
+  "homepage": "https://panorange.github.io/easy-repair/",
   "private": true,
   "dependencies": {
     "chance": "^1.0.8",

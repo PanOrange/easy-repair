@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import { DateRangePicker } from 'react-dates';
 
 import Field from '../../../components/Field';
-import { Icon } from '../../../components/Icon';
 
 import { queryActions } from '../../../actions';
 
