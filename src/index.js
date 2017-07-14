@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { Router, hashHistory } from 'react-router';
 
 import './index.css';
 
 import store from './store';
 
 import { syncHistoryWithStore } from 'react-router-redux';
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 import { ROUTES } from './constants';
 
