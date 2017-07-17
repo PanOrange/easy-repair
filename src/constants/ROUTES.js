@@ -11,13 +11,13 @@ import Projects from '../containers/pages/Projects';
 import Query from '../containers/pages/Query';
 
 export const ROUTES = (
-    <Route path={process.env.PUBLIC_URL + "/"} component={App}>
+    <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path={process.env.PUBLIC_URL + "about"} component={About} />
-        <Route path={process.env.PUBLIC_URL + "best"} component={Best} />
-        <Route path={process.env.PUBLIC_URL + "contacts"} component={Contacts} />
-        <Route path={process.env.PUBLIC_URL + "projects"} component={Projects} />
-        <Route path={process.env.PUBLIC_URL + "query"} component={Query} />
-        <Route path={process.env.PUBLIC_URL + "*"} component={Error} />
+        <Route path="about" component={About} />
+        <Route path="best" component={Best} />
+        <Route path="contacts" component={Contacts} />
+        <Route path="projects" component={Projects} />
+        <Route path="query" component={Query} />
+        <Route path="*" component={Error} />
     </Route>
 );
