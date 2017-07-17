@@ -9,7 +9,7 @@ chance.mixin({
             id: chance.natural({min: 1001, max: 2000}),
             worker: chance.pickone(WORKERS),
             text: chance.paragraph(),
-            photo: '/image/img-studio-' + chance.natural({min: 2, max: 13}) + '.jpg',
+            photo: process.env.PUBLIC_URL + '/img-studio-' + chance.natural({min: 2, max: 13}) + '.jpg',
             period: chance.natural({min: 1, max: 10}),
             votes: chance.natural({min: 10, max: 200})
         }
