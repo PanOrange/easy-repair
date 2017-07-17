@@ -33,6 +33,7 @@ class Home extends Component {
     };
 
     componentDidMount() {
+        console.log('hello', process.env);
         this.state.classNames === "main homepage is-loading" ?
             this.setState({classNames: "main homepage"}) : null;
         window.addEventListener('resize', this.handleResize);
