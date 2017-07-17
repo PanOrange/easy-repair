@@ -1,6 +1,15 @@
 import Chance from 'chance';
 const chance = new Chance();
 
+import worker1 from '../img/worker1.jpg';
+import worker2 from '../img/worker2.jpg';
+import worker3 from '../img/worker3.jpg';
+import worker4 from '../img/worker4.jpg';
+import worker5 from '../img/worker5.jpg';
+import worker6 from '../img/worker6.jpg';
+import worker7 from '../img/worker7.jpg';
+
+
 import { CITIES } from './CITIES';
 import { SKILLS } from './SKILLS';
 
@@ -65,7 +74,7 @@ chance.mixin({
             phone:      chance.phone(),
             rate:       chance.natural({min: 4, max: 10}),
             description: [chance.sentence(), chance.paragraph(), chance.sentence()],
-            photo:      '../image/worker' + chance.natural({min: 1, max: 7}) + '.jpg'
+            photo:      process.env.PUBLIC_URL + '/image/worker' + chance.natural({min: 1, max: 7} + '.jpg')
         };
     }
 });
