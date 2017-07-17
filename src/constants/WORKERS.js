@@ -74,7 +74,7 @@ chance.mixin({
             phone:      chance.phone(),
             rate:       chance.natural({min: 4, max: 10}),
             description: [chance.sentence(), chance.paragraph(), chance.sentence()],
-            photo:      process.env.PUBLIC_URL + '/easy-repair/image/worker' + chance.natural({min: 1, max: 7} + '.jpg')
+            photo:      process.env.PUBLIC_URL + '/image/worker' + chance.natural({min: 1, max: 7}) + '.jpg'
         };
     }
 });
