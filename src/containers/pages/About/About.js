@@ -9,7 +9,7 @@ class About extends Component {
                 <div className="wrapper">
                     <h1>Про нас</h1>
                     <p>{chance.paragraph()}</p>
-                    <img src="/image/img-studio-5.jpg" alt=""/>
+                    <img src={process.env.PUBLIC_URL + "/img-studio-5.jpg"} alt=""/>
                     <p>{chance.paragraph()}</p>
                     <p>{chance.paragraph()}</p>
                     <p>{chance.paragraph()}</p>
